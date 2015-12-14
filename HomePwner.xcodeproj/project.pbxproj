@@ -13,6 +13,7 @@
 		18A006EA1C059510004ED4B3 /* HomePwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A006E91C059510004ED4B3 /* HomePwnerTests.swift */; };
 		18A006F51C059510004ED4B3 /* HomePwnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A006F41C059510004ED4B3 /* HomePwnerUITests.swift */; };
 		18A007031C0663D5004ED4B3 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A007021C0663D5004ED4B3 /* ItemsTableViewController.swift */; };
+		18A007091C0CFFD4004ED4B3 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A007081C0CFFD4004ED4B3 /* ItemStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		18A006F41C059510004ED4B3 /* HomePwnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePwnerUITests.swift; sourceTree = "<group>"; };
 		18A006F61C059510004ED4B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18A007021C0663D5004ED4B3 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
+		18A007081C0CFFD4004ED4B3 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				18A007021C0663D5004ED4B3 /* ItemsTableViewController.swift */,
 				18A006DB1C059510004ED4B3 /* Assets.xcassets */,
 				18A006DD1C059510004ED4B3 /* LaunchScreen.storyboard */,
+				18A007081C0CFFD4004ED4B3 /* ItemStore.swift */,
 			);
 			path = HomePwner;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A007031C0663D5004ED4B3 /* ItemsTableViewController.swift in Sources */,
+				18A007091C0CFFD4004ED4B3 /* ItemStore.swift in Sources */,
 				18A006D51C059510004ED4B3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
