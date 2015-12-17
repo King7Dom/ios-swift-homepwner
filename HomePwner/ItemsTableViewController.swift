@@ -46,18 +46,39 @@ class ItemsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        let (sortedOverArray, sortedUnderArray) = ItemStore.sharedStore.itemOver(50)
+        let sortedArrays = [sortedOverArray, sortedUnderArray]
+        return sortedArrays.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ItemStore.sharedStore.items.count
+        let (sortedOverArray, sortedUnderArray) = ItemStore.sharedStore.itemOver(50)
+        let sortedArrays = [sortedOverArray, sortedUnderArray]
+        return sortedArrays[section].count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
-        let item = ItemStore.sharedStore.items[indexPath.row]
+
+        let (sortedOverArray, sortedUnderArray) = ItemStore.sharedStore.itemOver(50)
+        let sortedArrays = [sortedOverArray, sortedUnderArray]
+        let item = sortedArrays[indexPath.section][indexPath.row];
         cell.textLabel?.text = item.description
         return cell
+    }
+
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let (sortedOverArray, sortedUnderArray) = ItemStore.sharedStore.itemOver(50)
+        let sortedArrays = [sortedOverArray, sortedUnderArray]
+
+        guard let item = sortedArrays[section].first else {
+            return nil
+        }
+
+        if item.value > 50 {
+            return "Over 50"
+        } else {
+            return "Under 50"
+        }
     }
 }

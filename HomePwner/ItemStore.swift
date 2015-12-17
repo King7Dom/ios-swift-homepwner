@@ -18,9 +18,11 @@ class ItemStore: NSObject {
     // MARK: Instance Variables
 
     private(set) var items: [Item]
+    private var itemsCache: [Int : ([Item], [Item])]
 
     private override init() {
         items = [Item]()
+        itemsCache = [Int : ([Item], [Item])]()
 
         super.init()
     }
@@ -28,6 +30,29 @@ class ItemStore: NSObject {
     func createItem() {
         let item = Item.randomItem()
         items.append(item)
+        itemsCache = [Int : ([Item], [Item])]()
+    }
+
+    func itemOver(value: Int) -> ([Item], [Item]) {
+
+        // Check if cache exist
+        if let itemsCache = itemsCache[value] {
+            return itemsCache
+        }
+
+        var itemsOverValue = [Item]()
+        var itemsUnderValue = [Item]()
+
+        for item in items {
+            if item.value > value {
+                itemsOverValue.append(item)
+            } else {
+                itemsUnderValue.append(item)
+            }
+        }
+        let itemsSorted = (itemsOverValue, itemsUnderValue)
+        itemsCache[value] = itemsSorted
+        return itemsSorted
     }
 }
 
