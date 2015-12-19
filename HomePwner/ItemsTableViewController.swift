@@ -54,7 +54,7 @@ class ItemsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let (sortedOverArray, sortedUnderArray) = ItemStore.sharedStore.itemOver(50)
         let sortedArrays = [sortedOverArray, sortedUnderArray]
-        return sortedArrays[section].count
+        return sortedArrays[section].count + 1  // To present "No more items"
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -62,8 +62,13 @@ class ItemsTableViewController: UITableViewController {
 
         let (sortedOverArray, sortedUnderArray) = ItemStore.sharedStore.itemOver(50)
         let sortedArrays = [sortedOverArray, sortedUnderArray]
-        let item = sortedArrays[indexPath.section][indexPath.row];
-        cell.textLabel?.text = item.description
+        let section = sortedArrays[indexPath.section]
+        if indexPath.row < section.count {
+            let item = section[indexPath.row]
+            cell.textLabel?.text = item.description
+        } else {
+            cell.textLabel?.text = "No more items"
+        }
         return cell
     }
 
