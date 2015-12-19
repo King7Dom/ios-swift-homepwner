@@ -72,6 +72,18 @@ class ItemsTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var height: CGFloat = 44.0;
+        let (sortedOverArray, sortedUnderArray) = ItemStore.sharedStore.itemOver(50)
+        let sortedArrays = [sortedOverArray, sortedUnderArray]
+        let section = sortedArrays[indexPath.section]
+
+        if indexPath.row < section.count {
+            height = 60.0
+        }
+        return height
+    }
+
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let (sortedOverArray, sortedUnderArray) = ItemStore.sharedStore.itemOver(50)
         let sortedArrays = [sortedOverArray, sortedUnderArray]
